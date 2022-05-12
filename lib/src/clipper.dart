@@ -4,7 +4,7 @@ import 'package:vector_math/vector_math_64.dart';
 
 class BottomNavClipper extends CustomClipper<Path> {
   final int numberOfTabs;
-  final double notchHeight = kNavSize - 28;
+  final double notchHeight = kNavSize - 26;
   final topPaddingFactor = 0.0;
   final BuildContext context;
 
@@ -39,7 +39,7 @@ class BottomNavClipper extends CustomClipper<Path> {
     final secondControlPoint =
         Offset((animatedIndex * sectionWidth + paddingW / 2), notchHeight);
     final secondEndPoint = Offset(
-        (animatedIndex * sectionWidth + paddingW / 2) + curveControlOffset,
+        (animatedIndex * sectionWidth + paddingW / 2) + curveControlOffset + 10,
         notchHeight);
 
     path.cubicTo(
@@ -52,7 +52,8 @@ class BottomNavClipper extends CustomClipper<Path> {
 
     path.lineTo(
         ((animatedIndex + 1) * sectionWidth + paddingW / 2) -
-            curveControlOffset,
+            curveControlOffset -
+            10,
         notchHeight);
     final thirdControlPoint = Offset(
         ((animatedIndex + 1) * sectionWidth + paddingW / 2), notchHeight);

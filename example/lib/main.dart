@@ -31,12 +31,14 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: _bgColor,
-        child: Center(
-          child: Text("Selected Page: $selectedIndex"),
-        ),
-      ),
+      // body: Container(
+      //   child: Center(
+      //     child: Text("Selected Page: $selectedIndex"),
+      //   ),
+      // ),
+      backgroundColor: Colors.purple,
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       bottomNavigationBar: AwesomeBottomNav(
         menuItems: _getMenuItems(),
         highlightedIcons: _getHighlightedIcons(),
@@ -45,7 +47,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
             selectedIndex = value;
           });
         },
-        bodyBgColor: _bgColor,
+        bodyBgColor: Colors.transparent,
         // highlightColor: Color(0xFFFF9944),
         boxDecoration: BoxDecoration(
           gradient: LinearGradient(
@@ -57,11 +59,12 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
                 Color(0xff51F5EA),
               ],
               stops: [
-                0, 0.5, 1
-              ]
-          ),
+                0,
+                0.5,
+                1
+              ]),
         ),
-        navFgColor: Colors.grey.withOpacity(0.5),
+        navFgColor: Colors.transparent,
         navBgColor: Colors.white,
       ),
     );
@@ -69,10 +72,21 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
 
   List<Widget> _getHighlightedIcons() {
     final List<Icon> _items = List<Icon>.empty(growable: true);
-    _items.add(Icon(Icons.home,));
-    _items.add(Icon(Icons.shopping_cart,));
-    _items.add(Icon(Icons.category,));
-    _items.add(Icon(Icons.account_circle,));
+    _items.add(Icon(
+      Icons.home,
+    ));
+    _items.add(Icon(
+      Icons.shopping_cart,
+    ));
+    _items.add(Icon(
+      Icons.category,
+    ));
+    _items.add(Icon(
+      Icons.account_circle,
+    ));
+    _items.add(Icon(
+      Icons.account_circle,
+    ));
     return _items;
   }
 
@@ -81,6 +95,7 @@ class _ExampleHomePageState extends State<ExampleHomePage> {
     items.add(_getMenu(Icons.home_outlined, "Home"));
     items.add(_getMenu(Icons.shopping_cart_outlined, "Cart"));
     items.add(_getMenu(Icons.category_outlined, "Help"));
+    items.add(_getMenu(Icons.account_circle_outlined, "Profile"));
     items.add(_getMenu(Icons.account_circle_outlined, "Profile"));
     return items;
   }

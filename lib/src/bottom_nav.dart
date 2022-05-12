@@ -209,7 +209,7 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
             child: Material(
               color: widget.navBgColor,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: 7),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -221,7 +221,6 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
                                     .indexOf(widget.menuItems[i]));
                               },
                               child: Container(
-                                height: 64,
                                 child: Center(
                                   child: widget.menuItems[i],
                                 ),

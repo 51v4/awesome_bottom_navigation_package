@@ -26,7 +26,6 @@ class ExampleHomePage extends StatefulWidget {
 
 class _ExampleHomePageState extends State<ExampleHomePage> {
   int selectedIndex = 0;
-  final _bgColor = Color(0xFFF6F6F6);
 
   @override
   Widget build(BuildContext context) {

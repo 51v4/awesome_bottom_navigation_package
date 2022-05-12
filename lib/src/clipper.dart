@@ -30,7 +30,8 @@ class BottomNavClipper extends CustomClipper<Path> {
 
     final topPadding = topPaddingFactor * size.height;
     path.lineTo(
-        (animatedIndex * sectionWidth + paddingW / 2) - curveControlOffset, 0);
+        (animatedIndex * sectionWidth + paddingW / 2) - curveControlOffset + 32,
+        0);
 
     final firstControlPoint =
         Offset((animatedIndex * sectionWidth + paddingW / 2), 0);
@@ -60,7 +61,8 @@ class BottomNavClipper extends CustomClipper<Path> {
         Offset(((animatedIndex + 1) * sectionWidth + paddingW / 2), 0);
     final fourthEndPoint = Offset(
         ((animatedIndex + 1) * sectionWidth + paddingW / 2) +
-            curveControlOffset,
+            curveControlOffset -
+            32,
         0);
 
     path.cubicTo(

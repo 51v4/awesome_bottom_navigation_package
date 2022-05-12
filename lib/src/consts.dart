@@ -1,2 +1,2 @@
-const double kNavSize = 62.0;
-const double kCircleSize = 74.0;
+const double kNavSize = 60.0;
+const double kCircleSize = 60.0;

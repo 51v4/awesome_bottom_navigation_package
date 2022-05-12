@@ -106,12 +106,12 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
       ),
     );
     _sinkAnimation =
-        Tween(begin: -40.0, end: kNavSize.toDouble()).animate(CurvedAnimation(
+        Tween(begin: -32.0, end: kNavSize.toDouble()).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(0.0, 0.25, curve: Curves.easeInOutSine),
     ));
     _riseAnimation =
-        Tween(end: -40.0, begin: kNavSize.toDouble()).animate(CurvedAnimation(
+        Tween(end: -32.0, begin: kNavSize.toDouble()).animate(CurvedAnimation(
       parent: _animationController,
       curve: Interval(0.75, 1.0, curve: Curves.easeInOutSine),
     ));
@@ -135,7 +135,7 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
 
   double _getMainCircleTop() {
     if (!_animationController.isAnimating) {
-      return -40;
+      return -32;
     }
 
     if (_animationController.value < 0.5) {
@@ -146,12 +146,13 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
   }
 
   double _getMainCircleLeft(Size size) {
-    final totalPadding = size.width - (kNavSize * widget.highlightedIcons.length);
+    final totalPadding =
+        size.width - (kCircleSize * widget.highlightedIcons.length);
     final singlePadding = totalPadding / (widget.highlightedIcons.length + 1);
     return ((_animationController.isAnimating
                 ? _posXAnimation.value
                 : _selectedIndex) *
-            kNavSize) +
+            kCircleSize) +
         (singlePadding *
             ((_animationController.isAnimating
                     ? _posXAnimation.value
@@ -166,10 +167,10 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
         top: _getMainCircleTop(),
         left: _getMainCircleLeft(_size),
         child: SizedBox(
-          height: kNavSize,
-          width: kNavSize,
+          height: kCircleSize,
+          width: kCircleSize,
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(kNavSize),
+            borderRadius: BorderRadius.circular(kCircleSize),
             child: Container(
               clipBehavior: Clip.antiAlias,
               decoration: widget.boxDecoration,
@@ -210,19 +211,22 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: widget.menuItems.mapIndexed((e, i) => Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      _tapped(widget.menuItems.indexOf(widget.menuItems[i]));
-                    },
-                    child: Container(
-                      height: 64,
-                      child: Center(
-                        child: widget.menuItems[i],
-                      ),
-                    ),
-                  ),
-                )).toList(),
+                children: widget.menuItems
+                    .mapIndexed((e, i) => Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              _tapped(widget.menuItems
+                                  .indexOf(widget.menuItems[i]));
+                            },
+                            child: Container(
+                              height: 64,
+                              child: Center(
+                                child: widget.menuItems[i],
+                              ),
+                            ),
+                          ),
+                        ))
+                    .toList(),
               ),
             ),
           ),

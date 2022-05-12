@@ -208,25 +208,28 @@ class _AwesomeBottomNavState extends State<AwesomeBottomNav>
             height: kNavSize + MediaQuery.of(context).padding.bottom,
             child: Material(
               color: widget.navBgColor,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: widget.menuItems
-                    .mapIndexed((e, i) => Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              _tapped(widget.menuItems
-                                  .indexOf(widget.menuItems[i]));
-                            },
-                            child: Container(
-                              height: 64,
-                              child: Center(
-                                child: widget.menuItems[i],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 4),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: widget.menuItems
+                      .mapIndexed((e, i) => Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                _tapped(widget.menuItems
+                                    .indexOf(widget.menuItems[i]));
+                              },
+                              child: Container(
+                                height: 64,
+                                child: Center(
+                                  child: widget.menuItems[i],
+                                ),
                               ),
                             ),
-                          ),
-                        ))
-                    .toList(),
+                          ))
+                      .toList(),
+                ),
               ),
             ),
           ),

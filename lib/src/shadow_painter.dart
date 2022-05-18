@@ -4,7 +4,7 @@ import 'package:vector_math/vector_math_64.dart' as vector;
 
 class BottomNavShadowPainter extends CustomPainter {
   final numberOfTabs;
-  final double notchHeight = kNavSize - 8;
+  final double notchHeight = kNavSize - 26;
   final topPaddingFactor = 0.0;
   final BuildContext context;
 
@@ -26,11 +26,13 @@ class BottomNavShadowPainter extends CustomPainter {
     var path = Path();
     path.moveTo(0, 0);
     final sectionWidth = (size.width - paddingW) / numberOfTabs;
-    final curveControlOffset = sectionWidth * 0.5;
+    final curveControlOffset = sectionWidth * 0.4;
 
     final topPadding = topPaddingFactor * size.height;
     path.lineTo(
-        (animatedIndex * sectionWidth + paddingW / 2) - curveControlOffset + 32,
+        (animatedIndex * sectionWidth + paddingW / 2) -
+            curveControlOffset +
+            curveControlOffset,
         0);
 
     final firstControlPoint =
@@ -39,7 +41,7 @@ class BottomNavShadowPainter extends CustomPainter {
     final secondControlPoint =
         Offset((animatedIndex * sectionWidth + paddingW / 2), notchHeight);
     final secondEndPoint = Offset(
-        (animatedIndex * sectionWidth + paddingW / 2) + curveControlOffset,
+        (animatedIndex * sectionWidth + paddingW / 2) + curveControlOffset + 10,
         notchHeight);
 
     path.cubicTo(
@@ -52,18 +54,16 @@ class BottomNavShadowPainter extends CustomPainter {
 
     path.lineTo(
         ((animatedIndex + 1) * sectionWidth + paddingW / 2) -
-            curveControlOffset,
+            curveControlOffset -
+            10,
         notchHeight);
     final thirdControlPoint = Offset(
         ((animatedIndex + 1) * sectionWidth + paddingW / 2), notchHeight);
 
     final fourthControlPoint =
         Offset(((animatedIndex + 1) * sectionWidth + paddingW / 2), 0);
-    final fourthEndPoint = Offset(
-        ((animatedIndex + 1) * sectionWidth + paddingW / 2) +
-            curveControlOffset -
-            32,
-        0);
+    final fourthEndPoint =
+        Offset(((animatedIndex + 1) * sectionWidth + paddingW / 2), 0);
 
     path.cubicTo(
         thirdControlPoint.dx,
